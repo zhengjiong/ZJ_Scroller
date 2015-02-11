@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <com.zj.example.scroller.Demo2View
+        android:id="@+id/viewgroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_light"
+        android:layout_marginLeft="40dp">
+        <TextView
+            android:id="@+id/velocity_value"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="left"
+            android:background="@android:color/holo_orange_dark"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:text="0"
+            />
+    </com.zj.example.scroller.Demo2View>
+</LinearLayout>
