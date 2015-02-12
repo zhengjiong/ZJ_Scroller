@@ -65,7 +65,7 @@ public class Demo3View extends LinearLayout {
 			//这里调用View的scrollTo()完成实际的滚动
 			scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
 			
-			//必须调用该方法，否则不一定能看到滚动效果
+			//必须调用该方法,会导致重新onDraw,onDraw会调用computeScroll
 			postInvalidate();
 		}
 		super.computeScroll();
@@ -76,6 +76,7 @@ public class Demo3View extends LinearLayout {
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_UP :
 			Log.i(TAG, "getScrollY=" + getScrollY());
+            //手指抬起的时候,回到开始的位置
             smoothScrollBy(-mScroller.getFinalX(), -mScroller.getFinalY());
 			break;
 		default:
