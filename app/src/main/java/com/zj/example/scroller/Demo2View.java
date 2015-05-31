@@ -75,8 +75,8 @@ public class Demo2View extends ViewGroup{
                 Log.i("zj", "XVelocity=" + mTracker.getXVelocity() + " ,YVelocity=" + mTracker.getYVelocity());
 
 
-                mChildView.setText("Move X=" + event.getX() + ",Y=" + event.getY() +
-                        " ,XVelocity=" + mTracker.getXVelocity() + " ,YVelocity=" + mTracker.getYVelocity());
+                mChildView.setText("Move X=" + event.getX() + ",Y=" + event.getY() + "\n" +
+                        "XVelocity=" + mTracker.getXVelocity() + " \nYVelocity=" + mTracker.getYVelocity());
 
                 invalidate();//這個會导致computeScroll方法被执行
                 break;
@@ -144,5 +144,11 @@ public class Demo2View extends ViewGroup{
          * 2.可以直接調用ViewGroup的measureChild方法,內部實現和上面類似
          */
         //measureChild(childView, widthMeasureSpec, heightMeasureSpec);
+        /**
+         * 3.可以直接使用measureChildren,測量所有childview的大小
+         */
+        //measureChildren(widthMeasureSpec, heightMeasureSpec);
+
+        //使用方法3最好!
     }
 }

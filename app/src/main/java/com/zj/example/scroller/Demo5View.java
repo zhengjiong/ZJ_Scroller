@@ -178,8 +178,6 @@ public class Demo5View extends ViewGroup {
 
         //手指位置地点
         float x = event.getX();
-        float y = event.getY();
-
 
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
@@ -270,6 +268,7 @@ public class Demo5View extends ViewGroup {
 
         curScreen = whichScreen ;
 
+        //如果是最後一屏
         if(curScreen > getChildCount() - 1)
             curScreen = getChildCount() - 1 ;
 
@@ -277,7 +276,7 @@ public class Demo5View extends ViewGroup {
 
         Log.e(TAG, "### onTouchEvent  ACTION_UP### dx is " + dx);
 
-        mScroller.startScroll(getScrollX(), 0, dx, 0,Math.abs(dx) * 2);
+        mScroller.startScroll(getScrollX(), 0, dx, 0,Math.abs(dx) * 1);
 
         //此时需要手动刷新View 否则没效果
         invalidate();
@@ -321,8 +320,19 @@ public class Demo5View extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             // 设置每个子视图的大小 ， 即全屏
-            child.measure(getWidth(), Demo5.scrrenHeight);
+
+            /**
+             * 3種方式可以設置
+             */
+            //方法1
+            //child.measure(widthMeasureSpec, heightMeasureSpec);
+
+            //方法2
+            measureChild(child, widthMeasureSpec, heightMeasureSpec);
         }
+
+        //方法3
+        //measureChildren(widthMeasureSpec, heightMeasureSpec);
     }
 
     private int curPage = 0 ;

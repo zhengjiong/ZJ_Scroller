@@ -65,12 +65,22 @@ public class Demo3View extends LinearLayout {
 			//这里调用View的scrollTo()完成实际的滚动
 			scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
 			
-			//必须调用该方法，否则不一定能看到滚动效果
+			//執行后會調用computeScroll方法
 			postInvalidate();
 		}
 		super.computeScroll();
 	}
-	
+
+	/**
+	 * 可以讓ScrollView不能滾動,滑動ScrollView也可以下拉
+	 * @param event
+	 * @return
+	 */
+	/*@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		return true;
+	}*/
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
@@ -89,6 +99,7 @@ public class Demo3View extends LinearLayout {
 		@Override
 		public boolean onDown(MotionEvent e) {
 			// TODO Auto-generated method stub
+			//必須返回true,後面的move事件才能接收到
 			return true;
 		}
 
@@ -104,10 +115,26 @@ public class Demo3View extends LinearLayout {
 			return false;
 		}
 
+		/**
+		 *
+		 * @param e1   e1 - The first down motion event that started the scrolling.(滾動的起始點)
+		 * @param e2   e2 - The move motion event that triggered the current onScroll.(當前滾動到的點)
+		 * @param distanceX  distanceX - The distance along the X axis that has been scrolled since the last call to onScroll.
+ *                         	 This is NOT the distance between e1 and e2.
+		 *                   目前滾動的位置和上一次滾動位置的距離,而不是e1(滾動的起始點)和e2(當前滾動到的點)之間的距離
+		 *
+		 * @param distanceY  distanceY - The distance along the Y axis that has been scrolled since the last call to onScroll. This is NOT the distance between e1 and e2.
+		 * @return
+		 */
 		@Override
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 				float distanceX, float distanceY) {
-			
+
+			/*
+			 *	distanceY - The distance along the Y axis that has been scrolled since the last call to onScroll.
+			 *	This is NOT the distance between e1 and e2.
+			 *
+			 */
 			int dis = (int)((distanceY-0.5)/3);
 			Log.i(TAG, dis + ".");
 			smoothScrollBy(0, dis);

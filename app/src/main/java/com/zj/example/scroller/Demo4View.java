@@ -117,7 +117,6 @@ public class Demo4View extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
-            child.measure(widthMeasureSpec, heightMeasureSpec);
         }
     }
 

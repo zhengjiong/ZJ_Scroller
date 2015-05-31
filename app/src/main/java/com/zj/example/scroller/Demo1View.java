@@ -9,7 +9,7 @@ import android.widget.Scroller;
 /**
  * http://blog.csdn.net/bigconvience/article/details/26735705
  *
- * mScroller.startScroll(mScroller.getFinalX(), mScroller.getFinalY(), x, y, duration);
+ * mScroller.startScroll(startX, startY, x, y, duration);
  * 开始一个动画控制，由(startX , startY)在duration时间内前进(dx,dy)个单位，即到达坐标为(startX+dx , startY+dy)處
  *
  * create by zhengjiong
