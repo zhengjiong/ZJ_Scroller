@@ -71,6 +71,7 @@ public class Demo2View extends ViewGroup{
                 //設置計算的單位,1000代表返回值為每秒的像素移動值px/s,1的話就是每毫秒的移動值px/ms
                 mTracker.computeCurrentVelocity(1000);
 
+                //velocity:速度
                 //从左向右划返回正数，从右向左划返回负数, 从上往下划返回正数，从下往上划返回负数
                 Log.i("zj", "XVelocity=" + mTracker.getXVelocity() + " ,YVelocity=" + mTracker.getYVelocity());
 
@@ -134,7 +135,7 @@ public class Demo2View extends ViewGroup{
         int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
         int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
 
-
+        //measureChildren();
         childView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
 
         //經過measure之後,childview.getmeasureWidth和height就會有值出現,不然是0
